@@ -2,7 +2,7 @@
 
 A remote IT job board built with Next.js, featuring job filtering by industry and location, powered by the Jobicy API.
 
-**Live demo:** [sat-trakt-zadatak.vercel.app](https://sat-trakt-zadatak.vercel.app/)
+**Live demo:** [sat-trakt-zadatak-git-feature-bookmark-yeknas-projects.vercel.app](https://sat-trakt-zadatak-git-feature-bookmark-yeknas-projects.vercel.app/)
 
 ## Tech Stack
 
