@@ -80,3 +80,5 @@ export const INDUSTRIES = new Map([
 export const JOBICY_BASE_URL = "https://jobicy.com/api/v2/remote-jobs";
 
 export const BASE_URL = process.env.BASE_URL || 'http://localhost:3000'
+
+export const STORAGE_KEY = "appliedJobs"

@@ -15,4 +15,5 @@ export type Job = {
   jobType: string[];
   jobGeo: string;
   jobLevel: string;
+  jobSlug: string;
 };
