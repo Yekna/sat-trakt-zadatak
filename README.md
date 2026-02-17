@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sat Trakt Zadatak
+
+A remote IT job board built with Next.js, featuring job filtering by industry and location, powered by the Jobicy API.
+
+## Tech Stack
+
+- **Next.js 16** with App Router
+- **React 19**
+- **Tailwind CSS 4** with shadcn/ui and Base UI components
+- **TanStack React Query** for data fetching and caching
+- **nuqs** for URL query state management
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/              → Pages, layout, API routes
+components/
+  ui/             → Reusable UI primitives (shadcn/Base UI)
+  pro-blocks/     → Page-level sections (hero, etc.)
+  *.tsx           → Feature components (cards, filters, job board)
+lib/              → Utilities, types, constants
+```
 
-## Learn More
+## Design Decisions
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Button asChild for Links:** used for SEO, prefetch and accessability purposes where search engines can crawl the links and users can right-click to open in a new tab, middle-click, cmd/ctrl+click, etc
+- **decode method:** jobicy returns html entities from the database instead of their characters
+- **jobs.length deciding tailwind className:** on certain resolutions when we render a list of cards it can make the page look ugly where GradientBackgroundImage overlaps with other elements outside of JobBoard (sometimes it can overlap with the top GradientBackgroundImage), if there's less than an ideal number of jobs to render
