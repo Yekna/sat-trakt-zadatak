@@ -31,7 +31,6 @@ export function JobBoard() {
   });
 
   const { industry, jobGeo } = filters;
-  console.log({ industry, jobGeo });
   const hasFilters = !!industry || !!jobGeo;
 
   const { data, isLoading, isError, refetch } = useQuery({
