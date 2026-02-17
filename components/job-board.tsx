@@ -9,7 +9,7 @@ import { Button } from "./ui/button";
 import { useMemo } from "react";
 import GradientBackroundImage from "./background-image";
 import { Filter } from "./filter";
-import { BASE_URL, INDUSTRIES, LOCATIONS } from "@/lib/constants";
+import { INDUSTRIES, LOCATIONS } from "@/lib/constants";
 import { decode } from "html-entities";
 
 async function fetchJobs(filters: {
@@ -21,7 +21,7 @@ async function fetchJobs(filters: {
   if (filters.industry) params.set("industry", filters.industry);
   if (filters.jobGeo) params.set("jobGeo", filters.jobGeo);
 
-  return fetch(`${BASE_URL}/api/jobs?${params}`).then((res) => res.json());
+  return fetch(`/api/jobs?${params}`).then((res) => res.json());
 }
 
 export function JobBoard() {
