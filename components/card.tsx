@@ -7,7 +7,7 @@ import {
   CardProfile,
   CardTitle,
 } from "@/components/ui/card";
-import { cva, VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
@@ -49,6 +49,7 @@ const Card = ({
   } = job;
   const alt = `${companyName} - Logo`;
   const variant = badge ? "highlighted" : "default";
+  const buttonVariant = variant === "default" ? "default" : "secondary";
 
   return (
     <BaseCard className={`${cn(cardVariants({ variant, className }))}`}>
@@ -73,21 +74,21 @@ const Card = ({
         <div className="flex flex-wrap gap-1">
           {jobType.map((type) => (
             <Badge
-              variant={variant === "default" ? "default" : "secondary"}
+              variant={buttonVariant}
               key={type}
             >
               {type}
             </Badge>
           ))}
-          <Badge variant={variant === "default" ? "default" : "secondary"}>
+          <Badge variant={buttonVariant}>
             {jobGeo}
           </Badge>
-          <Badge variant={variant === "default" ? "default" : "secondary"}>
+          <Badge variant={buttonVariant}>
             {jobLevel}
           </Badge>
           {jobIndustry.map((industry) => (
             <Badge
-              variant={variant === "default" ? "default" : "secondary"}
+              variant={buttonVariant}
               key={industry}
             >
               {industry}

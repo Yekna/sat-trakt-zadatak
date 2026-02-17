@@ -37,3 +37,4 @@ lib/              → Utilities, types, constants
 - **Button asChild for Links:** used for SEO, prefetch and accessability purposes where search engines can crawl the links and users can right-click to open in a new tab, middle-click, cmd/ctrl+click, etc
 - **decode method:** jobicy returns html entities from the database instead of their characters
 - **jobs.length deciding tailwind className:** on certain resolutions when we render a list of cards it can make the page look ugly where GradientBackgroundImage overlaps with other elements outside of JobBoard (sometimes it can overlap with the top GradientBackgroundImage), if there's less than an ideal number of jobs to render
+- **why count is set to 16:** looking at the design to me seems like setting the count query param to 16 was necessary, but other than that it helps with lcp
