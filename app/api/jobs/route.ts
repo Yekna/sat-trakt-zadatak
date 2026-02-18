@@ -1,34 +1,21 @@
-import { INDUSTRIES, JOBICY_BASE_URL, LOCATIONS } from "@/lib/constants";
+import { JOBICY_BASE_URL } from "@/lib/constants";
+import { jobFiltersSchema } from "@/lib/schemas";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
-  const params = new URLSearchParams(request.nextUrl.searchParams);
-  params.set("count", "16");
+  const raw = Object.fromEntries(request.nextUrl.searchParams);
+  const result = jobFiltersSchema.safeParse(raw);
 
-  const industry = params.get("industry");
-  if (industry && !INDUSTRIES.get(industry)) {
+  if (!result.success) {
     return NextResponse.json(
-      {
-        error: `Invalid industry value: "${industry}". Please select a valid industry from the dropdown`,
-      },
+      { error: result.error.issues[0].message },
       { status: 400 },
     );
   }
 
-  const jobGeo = params.get("jobGeo");
-  if (jobGeo && !LOCATIONS.get(jobGeo)) {
-    return NextResponse.json(
-      {
-        error: `Invalid company location value: "${jobGeo}". Please select a valid location from the dropdown`,
-      },
-      { status: 400 },
-    );
-  }
-
-  if (jobGeo) {
-    params.set("geo", jobGeo);
-    params.delete("jobGeo");
-  }
+  const params = new URLSearchParams({ count: "16" });
+  if (result.data.industry) params.set("industry", result.data.industry);
+  if (result.data.jobGeo) params.set("geo", result.data.jobGeo);
 
   const data = await fetch(`${JOBICY_BASE_URL}?${params}`).then((res) =>
     res.json(),
