@@ -6,7 +6,7 @@ import {
   HydrationBoundary,
 } from "@tanstack/react-query";
 import { BASE_URL } from "@/lib/constants";
-import { makeQueryClient } from "./providers";
+import { makeQueryClient } from "@/lib/utils";
 
 export async function getJobs(
   filters: Record<string, string>,
