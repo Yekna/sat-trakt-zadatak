@@ -7,6 +7,7 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import { BASE_URL } from "@/lib/constants";
+import { makeQueryClient } from "./providers";
 
 export async function getJobs(
   filters: Record<string, string>,
@@ -22,7 +23,7 @@ export default async function Home({
   searchParams: Promise<any>;
 }) {
   const params = await searchParams;
-  const queryClient = new QueryClient();
+  const queryClient = makeQueryClient();
 
   await queryClient.prefetchQuery({
     queryKey: [
