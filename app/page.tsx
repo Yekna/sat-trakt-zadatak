@@ -4,7 +4,6 @@ import { Hero } from "@/components/hero";
 import {
   dehydrate,
   HydrationBoundary,
-  QueryClient,
 } from "@tanstack/react-query";
 import { BASE_URL } from "@/lib/constants";
 import { makeQueryClient } from "./providers";
